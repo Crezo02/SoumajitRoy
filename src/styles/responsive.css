@@ -1,0 +1,222 @@
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 1180px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .hero-copy {
+    max-width: 44rem;
+  }
+  .hero-title {
+    max-width: 18ch;
+  }
+  .hero-panel {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1rem;
+    align-items: start;
+    max-width: 44rem;
+  }
+  .gh-card {
+    margin-top: 0;
+  }
+  .nav-clock {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  :root {
+    --nav-h: 66px;
+  }
+  .side-rail {
+    display: none;
+  }
+  .nav-links {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: var(--pad);
+    left: var(--pad);
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(7, 16, 25, 0.96);
+    backdrop-filter: blur(20px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease),
+      visibility 0.35s;
+  }
+  .nav-links.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav-indicator {
+    display: none;
+  }
+  .nav-link {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+  }
+  .nav-burger {
+    display: flex;
+  }
+  .nav-clock {
+    display: none;
+  }  .work-card__inner {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .work-card__art {
+    order: -1;
+  }
+  .art-still {
+    width: clamp(96px, 30%, 140px);
+  }
+  .work-card {
+    position: static;
+  }
+  .repo-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name date"
+      "lang bar";
+    gap: 0.55rem 1rem;
+  }
+  .repo-name {
+    grid-area: name;
+  }
+  .repo-date {
+    grid-area: date;
+  }
+  .repo-lang {
+    grid-area: lang;
+  }
+  .repo-bar {
+    grid-area: bar;
+    width: min(170px, 42vw);
+    justify-self: end;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding-top: calc(var(--nav-h) + 2.5rem);
+    padding-bottom: 5rem;
+  }
+  .contact-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    border-radius: 26px;
+    padding: 1.4rem 1.2rem;
+    gap: 0.9rem;
+    max-width: 420px;
+  }
+  .contact-card__portrait {
+    height: 216px;
+  }
+  .contact-card__links {
+    margin-left: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    flex-direction: column;
+  }
+  .hero-title {
+    max-width: 14ch;
+  }
+  .hero-panel {
+    grid-template-columns: 1fr;
+  }
+  .hero-stats {
+    gap: 1.2rem 2rem;
+  }
+  .stat {
+    min-width: calc(50% - 2rem);
+  }
+  .contact-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-social {
+    gap: 0;
+  }
+  .nav-social a {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+  .nav-social a svg {
+    width: 17px;
+    height: 17px;
+  }
+  .footer-mid {
+    display: none;
+  }
+  .scroll-cue {
+    display: none;
+  }
+  .journey-list {
+    padding-left: 1.7rem;
+  }
+  .journey-item::before {
+    left: -1.7rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    padding: 0.4rem 0.8rem;
+  }
+  .hero-actions .btn {
+    width: 100%;
+  }
+  .contact-actions .btn {
+    width: 100%;
+  }
+  .nav-cta {
+    display: none;
+  }
+  .nav {
+    gap: 0.7rem;
+  }
+  .logo-text {
+    font-size: clamp(0.66rem, 2.9vw, 0.82rem);
+    letter-spacing: 0.05em;
+  }
+  .nav-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+  }
+  .nav-social a svg {
+    width: 16px;
+    height: 16px;
+  }
+  .terminal__body {
+    font-size: 0.7rem;
+    min-height: 210px;
+  }
+  .repo-row {
+    padding: 0.85rem 1rem;
+  }
+  .repo-row:hover {
+    padding-left: 1.1rem;
+  }
+  .section {
+    padding-block: clamp(3.6rem, 10vw, 5rem);
+  }
+  .footer-row {
+    justify-content: center;
+    text-align: center;
+  }
+}

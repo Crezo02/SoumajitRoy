@@ -1,0 +1,44 @@
+/* ============================================================
+   Tokens — Amyreil house palette, light (paper) theme
+   ============================================================ */
+:root {
+  /* surfaces */
+  --bg: #f5f4ef;
+  --bg-2: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #eceae2;
+  --terminal-bg: #0b1824;
+
+  /* ink */
+  --text: #071019;
+  --muted: rgba(7, 16, 25, 0.74);
+  --faint: rgba(7, 16, 25, 0.6);
+  --line: rgba(7, 16, 25, 0.11);
+  --line-strong: rgba(7, 16, 25, 0.2);
+
+  /* accents */
+  --blue: #0359fc; /* fills on paper */
+  --accent: #0a3fbe; /* accent text on paper */
+  --blue-bright: #3d86ff; /* accents on dark surfaces */
+  --pink: #c0356f; /* accent text on paper */
+  --pink-bright: #f2a9c5; /* accents on dark surfaces */
+  --blue-soft: #dbe7ff;
+
+  --font-sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-hand: "Caveat", "Segoe Script", cursive;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.5, 0, 0.75, 0);
+
+  --pad: clamp(1.25rem, 4.6vw, 5rem);
+  --shell: 1400px;
+  --nav-h: 74px;
+
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 26px;
+  --shadow-card: 0 26px 60px -34px rgba(7, 16, 25, 0.32);
+}

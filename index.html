@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soumajit Roy — Engineer, Bengaluru</title>
+    <meta
+      name="description"
+      content="Soumajit Roy builds real software from Bengaluru: React and Vite interfaces, Flask and PHP APIs, voice and NLP pipelines, and sites that actually ship."
+    />
+    <meta name="theme-color" content="#071019" />
+    <meta name="author" content="Soumajit Roy" />
+    <link rel="canonical" href="https://soumajitroy.dev/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Soumajit Roy — Engineer, Bengaluru" />
+    <meta
+      property="og:description"
+      content="Full-stack engineer building interfaces, APIs and shipped products. React · Python · PHP · NLP."
+    />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/159593564?v=4" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" href="/media/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/media/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <!-- preloader -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+      <div class="preloader__inner">
+        <span class="preloader__mark">SR</span>
+        <div class="preloader__bar"><i id="preloaderBar"></i></div>
+        <span class="preloader__num" id="preloaderNum">000</span>
+      </div>
+    </div>
+
+    <div class="grain" aria-hidden="true"></div>
+    <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+    <div class="cursor" aria-hidden="true">
+      <span class="cursor__dot"></span>
+      <span class="cursor__ring"><em id="cursorLabel"></em></span>
+    </div>
+    <div class="side-rail" aria-hidden="true">
+      <span class="side-rail__line"><i id="railFill"></i></span>
+      <span class="side-rail__text">Soumajit&nbsp;Roy</span>
+    </div>
+
+    <header class="nav" id="nav">
+      <a class="logo" href="#top" aria-label="Soumajit Roy, back to top">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="34" height="34">
+            <rect width="48" height="48" rx="14" fill="#071019" />
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+              <path d="M22 12 H9 V22 H22 V32 H9" stroke="#f5f4ef" />
+              <path d="M28 32 V12 H32 a5 5 0 0 1 0 10 H28" stroke="#f5f4ef" />
+              <path class="logo-mark__leg" d="M30.5 21.4 L38.5 32" stroke="#3d86ff" />
+            </g>
+          </svg>
+        </span>
+        <span class="logo-text">Soumajit <b>Roy</b></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Sections">
+        <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+        <a class="nav-link" href="#work" data-label="Work">Work</a>
+        <a class="nav-link" href="#github" data-label="GitHub">GitHub</a>
+        <a class="nav-link" href="#stack" data-label="Stack">Stack</a>
+        <a class="nav-link" href="#journey" data-label="Journey">Journey</a>
+        <a class="nav-link" href="#contact" data-label="Contact">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <nav class="nav-social" aria-label="Social links">
+          <a href="https://github.com/Crezo02" target="_blank" rel="noreferrer noopener" data-cursor="GitHub" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.4-1.27.74-1.56-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.3 1.19-3.1-.12-.3-.52-1.48.11-3.08 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.79.11 3.08.74.8 1.19 1.84 1.19 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/soumajit-roy-1727162a3" target="_blank" rel="noreferrer noopener" data-cursor="LinkedIn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/_.r0yy._/" target="_blank" rel="noreferrer noopener" data-cursor="Instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.59.07-4.85.15-3.23 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16Zm0 3.68a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg>
+          </a>
+        </nav>
+        <span class="nav-clock" id="clock" aria-label="Current time in Bengaluru">--:-- IST</span>
+        <a class="nav-cta" href="#contact" data-magnetic data-cursor="Say hi">
+          <span>Let's talk</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" /></svg>
+        </a>
+      </div>
+
+      <button class="nav-burger" id="burger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+        <i></i><i></i>
+      </button>
+    </header>
+
+    <main id="main">
+      <!-- ───────────────────────── hero ───────────────────────── -->
+      <section class="hero" id="top">
+        <canvas class="hero-scene" id="heroScene" aria-hidden="true"></canvas>
+        <div class="hero-aurora" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-vignette" aria-hidden="true"></div>
+
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow" data-reveal>
+              <span class="pulse" aria-hidden="true"></span>
+              <span>Bengaluru, India</span>
+              <span class="eyebrow__sep" aria-hidden="true"></span>
+              <span class="rotator" id="rotator">Full-stack engineer</span>
+            </p>
+
+            <h1 class="hero-title" data-split>
+              Pixels at the top. <em>Postgres</em> at the bottom.
+            </h1>
+
+            <p class="hero-sub" data-reveal data-delay="120">
+              I&rsquo;m Soumajit. I build the whole thing &mdash; the React interface,
+              the Flask and PHP behind it, the deploy, the SEO. Nine projects shipped
+              so far, and every one of them is live on a URL you can open.
+            </p>
+
+            <div class="hero-actions" data-reveal data-delay="220">
+              <a class="btn btn--primary" href="#work" data-magnetic data-cursor="See">
+                <span>See the work</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" /></svg>
+              </a>
+              <a class="btn btn--ghost" href="#github" data-magnetic data-cursor="Live">
+                <span>GitHub profile</span>
+              </a>
+            </div>
+
+            <ul class="hero-stats" data-reveal data-delay="320">
+              <li class="stat">
+                <span class="stat-value"><span data-count="9">0</span></span>
+                <span class="stat-label">Shipped projects</span>
+              </li>
+              <li class="stat">
+                <span class="stat-value"><span data-count="12">0</span></span>
+                <span class="stat-label">Lab experiments</span>
+              </li>
+              <li class="stat">
+                <span class="stat-value"><span data-count="5">0</span></span>
+                <span class="stat-label">Live deployments</span>
+              </li>
+              <li class="stat">
+                <span class="stat-value"><span data-count="3">0</span></span>
+                <span class="stat-label">Years building</span>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="hero-panel">
+            <div class="terminal" data-tilt data-cursor="Peek">
+              <div class="terminal__bar">
+                <span class="dot dot--r"></span>
+                <span class="dot dot--y"></span>
+                <span class="dot dot--g"></span>
+                <span class="terminal__name">soumajit — zsh</span>
+              </div>
+              <div class="terminal__body" id="terminal"></div>
+              <span class="terminal__glow" aria-hidden="true"></span>
+            </div>
+
+            <a class="gh-card" href="https://github.com/Crezo02" target="_blank" rel="noreferrer noopener" data-cursor="Open">
+              <img class="gh-card__avatar" src="https://avatars.githubusercontent.com/u/159593564?v=4" alt="" width="48" height="48" loading="lazy" />
+              <span class="gh-card__meta">
+                <span class="gh-card__name">@Crezo02</span>
+                <span class="gh-card__sub"><b id="ghRepos">—</b> repos · <b id="ghFollowers">—</b> followers</span>
+              </span>
+              <svg class="gh-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" /></svg>
+            </a>
+          </aside>
+        </div>
+
+        <a class="scroll-cue" href="#work" aria-label="Scroll to work">
+          <span>Scroll</span>
+          <span class="cue-line"><i></i></span>
+        </a>
+      </section>
+
+      <!-- ───────────────────────── ticker ───────────────────────── -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track" id="tickerTrack"></div>
+      </div>
+
+      <!-- ───────────────────────── work ───────────────────────── -->
+      <section class="section work" id="work">
+        <div class="section-head">
+          <p class="section-label" data-reveal><span>01</span> Selected work</p>
+          <h2 class="section-title" data-reveal data-delay="60">
+            Things that <em>actually run</em>.
+          </h2>
+          <p class="section-lede" data-reveal data-delay="120">
+            Every entry below is a real repository, a real deploy or both. No
+            mockups, no concept pieces.
+          </p>
+        </div>
+
+        <div class="work-list" id="workList"></div>
+      </section>
+
+      <!-- ───────────────────────── screens ───────────────────────── -->
+      <section class="section screens" id="screens">
+        <div class="section-head">
+          <p class="section-label" data-reveal><span>02</span> Screens</p>
+          <h2 class="section-title" data-reveal data-delay="60">
+            The actual <em>interfaces</em>.
+          </h2>
+          <p class="section-lede" data-reveal data-delay="120">
+            Real screens, captured from the live sites and from the repos
+            themselves. Scroll sideways.
+          </p>
+        </div>
+        <div class="screens__track" id="screensTrack"></div>
+      </section>
+
+      <!-- ───────────────────────── github ───────────────────────── -->
+      <section class="section github" id="github">
+        <div class="section-head">
+          <p class="section-label" data-reveal><span>03</span> Commit trail</p>
+          <h2 class="section-title" data-reveal data-delay="60">
+            Pulled live from <em>github.com/Crezo02</em>.
+          </h2>
+          <p class="section-lede" data-reveal data-delay="120">
+            This list is fetched from the GitHub API every time the page loads.
+            Nothing is hard-coded.
+          </p>
+        </div>
+
+        <div class="gh-live" id="ghLive">
+          <div class="gh-live__head">
+            <span class="gh-live__dot" aria-hidden="true"></span>
+            <span id="ghStatus" aria-live="polite">Fetching GitHub…</span>
+          </div>
+          <ul class="repo-list" id="repoList"></ul>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── stack ───────────────────────── -->
+      <section class="section stack" id="stack">
+        <div class="section-head">
+          <p class="section-label" data-reveal><span>04</span> Capabilities</p>
+          <h2 class="section-title" data-reveal data-delay="60">
+            What I <em>reach for</em>.
+          </h2>
+        </div>
+        <div class="cap-grid" id="capGrid"></div>
+      </section>
+
+      <!-- ───────────────────────── journey ───────────────────────── -->
+      <section class="section journey" id="journey">
+        <div class="section-head">
+          <p class="section-label" data-reveal><span>05</span> Journey</p>
+          <h2 class="section-title" data-reveal data-delay="60">
+            From <em>Hello&nbsp;World</em> to shipping.
+          </h2>
+        </div>
+        <div class="journey-list" id="journeyList"></div>
+      </section>
+
+      <!-- ───────────────────────── contact ───────────────────────── -->
+      <section class="section contact" id="contact">
+        <div class="contact-glow" aria-hidden="true"></div>
+
+        <div class="contact-card" data-reveal>
+          <span class="contact-card__portrait">
+            <img
+              class="contact-card__photo"
+              src="/media/portrait-cutout.webp"
+              alt="Soumajit Roy"
+              width="705"
+              height="900"
+              loading="lazy"
+            />
+          </span>
+          <div class="contact-card__body">
+            <p class="contact-card__name">Soumajit Roy</p>
+            <p class="contact-card__sub">Engineer · Bengaluru, India</p>
+          </div>
+          <ul class="contact-card__links">
+            <li>
+              <a href="mailto:Soumajit8292@gmail.com" data-cursor="Mail">Soumajit8292@gmail.com</a>
+            </li>
+            <li>
+              <a href="tel:+918293431323" data-cursor="Call">+91 82934 31323</a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="section-label" data-reveal><span>06</span> Contact</p>
+        <h2 class="contact-title" data-split>
+          Tell me what you&rsquo;re <em>building</em>.
+        </h2>
+        <p class="contact-sub" data-reveal data-delay="120">
+          Freelance builds, product work, or a backend that needs untangling.
+          I reply within a day.
+        </p>
+
+        <div class="contact-actions" data-reveal data-delay="200">
+          <a class="btn btn--primary btn--lg" id="mailBtn" href="mailto:contact@amyreil.online" data-magnetic data-cursor="Mail">
+            <span id="mailText">contact@amyreil.online</span>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" /></svg>
+          </a>
+          <button class="btn btn--ghost" type="button" id="copyBtn" data-magnetic data-cursor="Copy">
+            <span class="copy-label">Copy address</span>
+          </button>
+        </div>
+
+        <p class="contact-note" aria-hidden="true">I reply within a day &mdash; usually faster</p>
+
+        <div class="contact-elsewhere">
+          <p class="contact-elsewhere__label" data-reveal>Elsewhere on the web</p>
+          <div class="contact-socials" id="socials"></div>
+        </div>
+
+        <div class="contact-meta">
+          <p><span class="pulse" aria-hidden="true"></span> Available for select work</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-marquee" aria-hidden="true">
+        <div class="footer-marquee__track" id="footerTrack"></div>
+      </div>
+      <div class="footer-row">
+        <span class="footer-brand">
+          <img class="footer-brand__mark" src="/media/logo.svg" alt="" width="22" height="22" aria-hidden="true" />
+          <span>© <span id="year">2026</span> Soumajit Roy</span>
+        </span>
+        <span class="footer-mid">Built from scratch — no template</span>
+        <span class="footer-clock" id="footerClock">Bengaluru — --:--</span>
+        <a href="#top" data-cursor="Top">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
