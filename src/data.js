@@ -77,7 +77,7 @@ export const site = {
       year: '2026',
       role: 'Founder & engineer',
       blurb:
-        'A SaaS, AI and operational-software studio. Three products in flight — Trikal Darshi, HotelEase and AmyLearn — shipped from one codebase and one deploy pipeline.',
+        'A SaaS, AI and operational-software studio. Three products in flight — Trikal Darshi, AmySuite and AmyLearn — shipped from one codebase and one deploy pipeline.',
       tags: ['HTML', 'CSS', 'JS', 'Vercel'],
       metric: '3 products live',
       href: 'https://www.amyreil.online',
@@ -212,7 +212,7 @@ export const site = {
       title: 'Amyreil Technologies',
       role: 'Founder & engineer',
       blurb:
-        'Building SaaS, AI and operational software as a studio. Trikal Darshi, HotelEase and AmyLearn are live off one deploy pipeline.',
+        'Building SaaS, AI and operational software as a studio. Trikal Darshi, AmySuite and AmyLearn are live off one deploy pipeline.',
       href: 'https://www.amyreil.online',
     },
     {
