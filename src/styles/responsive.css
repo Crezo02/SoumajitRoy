@@ -2,25 +2,11 @@
    Responsive
    ============================================================ */
 @media (max-width: 1180px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
   .hero-copy {
-    max-width: 44rem;
+    max-width: 40rem;
   }
   .hero-title {
     max-width: 18ch;
-  }
-  .hero-panel {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 1rem;
-    align-items: start;
-    max-width: 44rem;
-  }
-  .gh-card {
-    margin-top: 0;
   }
   .nav-clock {
     display: none;
@@ -30,6 +16,9 @@
 @media (max-width: 960px) {
   :root {
     --nav-h: 66px;
+  }
+  .car-3d-stage {
+    opacity: 0.45;
   }
   .side-rail {
     display: none;
@@ -44,7 +33,7 @@
     padding: 0.7rem;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: rgba(7, 16, 25, 0.96);
+    background: rgba(5, 7, 12, 0.96);
     backdrop-filter: blur(20px);
     opacity: 0;
     visibility: hidden;
@@ -131,9 +120,6 @@
   }
   .hero-title {
     max-width: 14ch;
-  }
-  .hero-panel {
-    grid-template-columns: 1fr;
   }
   .hero-stats {
     gap: 1.2rem 2rem;

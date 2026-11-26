@@ -1,4 +1,4 @@
-// Real content, sourced from github.com/Crezo02 and amyreil.online.
+// Real content, sourced from github.com/Crezo02.
 export const site = {
   name: 'Soumajit Roy',
   initials: 'SR',
@@ -10,7 +10,6 @@ export const site = {
   timezone: 'Asia/Kolkata',
   availability: 'Open to freelance & collaboration',
   github: 'https://github.com/Crezo02',
-  company: 'https://www.amyreil.online',
   instagram: 'https://www.instagram.com/_.r0yy._/',
   linkedin: 'https://www.linkedin.com/in/soumajit-roy-1727162a3',
   avatar: 'https://avatars.githubusercontent.com/u/159593564?v=4',
@@ -63,34 +62,10 @@ export const site = {
       href: 'https://www.instagram.com/_.r0yy._/',
       icon: 'instagram',
     },
-    {
-      label: 'Amyreil',
-      handle: 'amyreil.online',
-      href: 'https://www.amyreil.online',
-      mark: '/media/amyreil-mark.svg',
-    },
   ],
   projects: [
     {
       n: '01',
-      title: 'Amyreil Technologies',
-      year: '2026',
-      role: 'Founder & engineer',
-      blurb:
-        'A SaaS, AI and operational-software studio. Three products in flight — Trikal Darshi, AmySuite and AmyLearn — shipped from one codebase and one deploy pipeline.',
-      tags: ['HTML', 'CSS', 'JS', 'Vercel'],
-      metric: '3 products live',
-      href: 'https://www.amyreil.online',
-      repo: null,
-      scene: 'orbit',
-      accent: 'blue',
-      clip: '/media/clip-amyreil.mp4',
-      shot: '/media/shot-amyreil.webp',
-      shotAlt:
-        'The Amyreil Technologies homepage — a dark cinematic hero with the headline “Better questions. Better software.”',
-    },
-    {
-      n: '02',
       title: 'SR Graphics',
       year: '2026',
       role: 'Design + build',
@@ -108,7 +83,7 @@ export const site = {
         'The S R Graphics website — the printing studio homepage with a workshop photo, studio statistics and a Free Quote button.',
     },
     {
-      n: '03',
+      n: '02',
       title: 'Muranti',
       year: '2026',
       role: 'Creator',
@@ -126,7 +101,7 @@ export const site = {
         'The Muranti translator — the rural Telugu to English speech interface with a microphone button and a 100-phrase phrasebook below.',
     },
     {
-      n: '04',
+      n: '03',
       title: 'TravelScope',
       year: '2026',
       role: 'Full-stack',
@@ -144,7 +119,7 @@ export const site = {
         'The TravelScope homepage — the “Discover Your Next Adventure” hero with a destination search field and a list of popular cities.',
     },
     {
-      n: '05',
+      n: '04',
       title: 'ProVocal',
       year: '2026',
       role: 'Backend',
@@ -162,7 +137,7 @@ export const site = {
         'ProVocal illustrated — a voice signal travelling through API nodes to call-centre agents.',
     },
     {
-      n: '06',
+      n: '05',
       title: 'DIGIMIinT',
       year: '2026',
       role: 'Frontend',
@@ -208,14 +183,6 @@ export const site = {
   ],
   journey: [
     {
-      period: '2026 — now',
-      title: 'Amyreil Technologies',
-      role: 'Founder & engineer',
-      blurb:
-        'Building SaaS, AI and operational software as a studio. Trikal Darshi, AmySuite and AmyLearn are live off one deploy pipeline.',
-      href: 'https://www.amyreil.online',
-    },
-    {
       period: '2026',
       title: 'SR Graphics',
       role: 'Design + build',
@@ -244,7 +211,7 @@ export const site = {
     '$ whoami',
     'soumajit-roy — bengaluru',
     '$ ls projects/',
-    'amyreil · sr-graphics · muranti',
+    'sr-graphics · muranti',
     'travel-scope · provocal · digimiint',
     '$ cat stack.txt',
     'react · vite · python · flask · php · mysql',

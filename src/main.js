@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { site } from './data.js';
 import { scene } from './scenes.js';
+import { initCar3D } from './car3d.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,7 +45,6 @@ function renderProjects() {
               <source src="${p.clip}" type="video/mp4" />
             </video>
             <span class="art-shade" aria-hidden="true"></span>
-            <span class="art-live" aria-hidden="true"><i></i>Preview</span>
             <span class="art-index" aria-hidden="true">${p.n}</span>
             <a class="art-still" href="${p.href}" target="_blank" rel="noreferrer noopener" data-cursor="Open">
               <img src="${p.shot}" alt="${p.shotAlt}" loading="lazy" width="1280" height="800" />
@@ -78,7 +78,7 @@ function renderCapabilities() {
   $('#capGrid').innerHTML = site.capabilities
     .map(
       (c, i) => `
-      <article class="cap-card" data-reveal data-delay="${i * 60}">
+      <article class="cap-card" data-num="0${i + 1}" data-reveal data-delay="${i * 60}">
         <span class="cap-num">0${i + 1}</span>
         <h3>${c.title}</h3>
         <p>${c.desc}</p>
@@ -215,7 +215,7 @@ function runPreloader() {
       ease: 'power2.inOut',
       onUpdate() {
         const v = Math.round(counter.v);
-        if (num) num.textContent = String(v).padStart(3, '0');
+        if (num) num.textContent = `${String(v * 90).padStart(4, '0')} RPM`;
         if (bar) bar.style.transform = `scaleX(${v / 100})`;
       },
       onComplete() {
@@ -281,190 +281,6 @@ function initScrollEngine() {
 
   drive($('#tickerTrack'), 3, 1);
   drive($('#footerTrack'), 2, -1);
-}
-
-/* ------------------------------------------------------------------ */
-/* Hero canvas scene                                                   */
-/* ------------------------------------------------------------------ */
-function initHeroScene() {
-  const canvas = $('#heroScene');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  const small = window.matchMedia('(max-width: 760px)').matches;
-  const dpr = Math.min(window.devicePixelRatio || 1, small ? 2 : 1.6);
-  const TAU = Math.PI * 2;
-  const rand = (a, b) => a + Math.random() * (b - a);
-
-  let W = 0;
-  let H = 0;
-  let raf = 0;
-  let running = true;
-  let yaw = 0;
-  let pitch = 0;
-  let targetYaw = 0;
-  let targetPitch = 0;
-
-  const dust = Array.from({ length: small ? 200 : 400 }, () => ({
-    x: rand(-6.2, 6.2),
-    y: rand(-3.2, 3.2),
-    z: rand(-2.4, 2.6),
-    s: rand(0.7, 2.4),
-    a: rand(0.12, 0.65),
-    v: rand(0.06, 0.2),
-    ph: rand(0, TAU),
-  }));
-  const embers = Array.from({ length: small ? 14 : 26 }, () => ({
-    x: rand(-1, 1),
-    y: rand(-1.7, 1.3),
-    z: rand(-0.6, 1),
-    s: rand(2, 5),
-    a: rand(0.3, 0.9),
-    v: rand(0.12, 0.38),
-    sway: rand(0.05, 0.24),
-    ph: rand(0, TAU),
-  }));
-  const shards = Array.from({ length: small ? 5 : 8 }, () => ({
-    r: rand(1.6, 3.4),
-    a: rand(0, TAU),
-    sp: rand(0.06, 0.2) * (Math.random() > 0.5 ? 1 : -1),
-    len: rand(0.1, 0.34),
-    w: rand(0.012, 0.03),
-    z: rand(-1.2, 1.2),
-  }));
-
-  const sprite = document.createElement('canvas');
-  sprite.width = sprite.height = 32;
-  const sctx = sprite.getContext('2d');
-  const grad = sctx.createRadialGradient(16, 16, 0, 16, 16, 16);
-  grad.addColorStop(0, 'rgba(10, 63, 190, 0.5)');
-  grad.addColorStop(0.3, 'rgba(10, 63, 190, 0.2)');
-  grad.addColorStop(0.65, 'rgba(61, 134, 255, 0.07)');
-  grad.addColorStop(1, 'rgba(61, 134, 255, 0)');
-  sctx.fillStyle = grad;
-  sctx.fillRect(0, 0, 32, 32);
-
-  const emberSprite = document.createElement('canvas');
-  emberSprite.width = emberSprite.height = 32;
-  const ectx = emberSprite.getContext('2d');
-  const egrad = ectx.createRadialGradient(16, 16, 0, 16, 16, 16);
-  egrad.addColorStop(0, 'rgba(192, 53, 111, 0.42)');
-  egrad.addColorStop(0.3, 'rgba(192, 53, 111, 0.16)');
-  egrad.addColorStop(0.7, 'rgba(192, 53, 111, 0.04)');
-  egrad.addColorStop(1, 'rgba(192, 53, 111, 0)');
-  ectx.fillStyle = egrad;
-  ectx.fillRect(0, 0, 32, 32);
-
-  const resize = () => {
-    const rect = canvas.getBoundingClientRect();
-    W = rect.width;
-    H = rect.height;
-    canvas.width = Math.round(W * dpr);
-    canvas.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  };
-
-  const project = (x, y, z) => {
-    const f = 3.1;
-    const zz = z + 3.1;
-    const s = f / Math.max(0.35, zz);
-    return { x: W * 0.5 + x * W * 0.09 * s, y: H * 0.5 + y * H * 0.13 * s, s };
-  };
-
-  const paint = (time) => {
-    ctx.clearRect(0, 0, W, H);
-    const cx = Math.cos(yaw);
-    const sx = Math.sin(yaw);
-
-    for (const d of dust) {
-      const rx = d.x * cx - d.z * sx;
-      const rz = d.x * sx + d.z * cx;
-      const p = project(rx, d.y + Math.sin(time * 0.0006 + d.ph) * 0.14, rz);
-      const size = clamp(d.s * p.s * 3.4, 1.2, 7);
-      ctx.globalAlpha = clamp(d.a * p.s * 0.62, 0, 0.6);
-      ctx.drawImage(sprite, p.x - size / 2, p.y - size / 2, size, size);
-    }
-
-    for (const e of embers) {
-      const p = project(e.x + Math.sin(time * 0.0008 + e.ph) * e.sway, e.y, e.z);
-      const size = clamp(e.s * p.s * 4.2, 2, 11);
-      ctx.globalAlpha = clamp(e.a * p.s * 0.5, 0, 0.52);
-      ctx.drawImage(emberSprite, p.x - size / 2, p.y - size / 2, size, size);
-    }
-
-    ctx.save();
-    ctx.globalAlpha = 0.2;
-    ctx.strokeStyle = 'rgba(10, 63, 190, 0.45)';
-    ctx.lineWidth = 1;
-    for (const sh of shards) {
-      const a = sh.a + time * 0.00008 * sh.sp * 10;
-      const x1 = Math.cos(a) * sh.r;
-      const y1 = Math.sin(a) * sh.r * 0.34;
-      const x2 = Math.cos(a + sh.len) * sh.r;
-      const y2 = Math.sin(a + sh.len) * sh.r * 0.34;
-      const p1 = project(x1, y1, sh.z);
-      const p2 = project(x2, y2, sh.z);
-      ctx.beginPath();
-      ctx.moveTo(p1.x, p1.y);
-      ctx.lineTo(p2.x, p2.y);
-      ctx.stroke();
-    }
-    ctx.restore();
-
-    ctx.globalAlpha = 1;
-  };
-
-  const step = (time) => {
-    if (!running) {
-      raf = requestAnimationFrame(step);
-      return;
-    }
-    yaw += (targetYaw - yaw) * 0.045;
-    pitch += (targetPitch - pitch) * 0.045;
-
-    dust.forEach((d) => {
-      d.z += d.v * 0.016;
-      if (d.z > 2.9) {
-        d.z = -2.5;
-        d.x = rand(-6.2, 6.2);
-        d.y = rand(-3.2, 3.2);
-      }
-    });
-    embers.forEach((e) => {
-      e.y -= e.v * 0.016;
-      if (e.y < -1.9) {
-        e.y = 1.4;
-        e.x = rand(-1, 1);
-      }
-    });
-    shards.forEach((sh) => {
-      sh.a += sh.sp * 0.004;
-    });
-
-    paint(time);
-    raf = requestAnimationFrame(step);
-  };
-
-  window.addEventListener('resize', resize);
-  if (finePointer && !reduce) {
-    window.addEventListener(
-      'pointermove',
-      (e) => {
-        targetYaw = (e.clientX / window.innerWidth - 0.5) * 0.55;
-        targetPitch = (e.clientY / window.innerHeight - 0.5) * 0.35;
-      },
-      { passive: true }
-    );
-  }
-
-  new IntersectionObserver(([entry]) => {
-    running = entry.isIntersecting;
-  }).observe(canvas);
-
-  resize();
-  paint(0);
-  if (!reduce) raf = requestAnimationFrame(step);
 }
 
 /* ------------------------------------------------------------------ */
@@ -969,13 +785,13 @@ function renderRepos(repos, languageMap) {
       const primary = langs.length
         ? langs.slice().sort((a, b) => b.bytes - a.bytes)[0]
         : { name: r.language || 'Other', bytes: 1 };
-      const color = site.langColors[primary.name] || '#3d86ff';
+      const color = site.langColors[primary.name] || '#d92626';
       const bars = langs.length
         ? langs
             .map(
               (l) =>
                 `<i style="background:${
-                  site.langColors[l.name] || '#3d86ff'
+                  site.langColors[l.name] || '#d92626'
                 };width:${((l.bytes / total) * 100).toFixed(1)}%"></i>`
             )
             .join('')
@@ -1183,6 +999,85 @@ function initScreens() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Automotive Telemetry HUD + Drive Mode Switcher                      */
+/* ------------------------------------------------------------------ */
+function initTelemetryHUD(carController) {
+  const hud = $('#telemetryHud');
+  const toggleBtn = $('#hudToggle');
+  const closeBtn = $('#hudClose');
+  const speedEl = $('#hudSpeed');
+  const gearEl = $('#hudGear');
+  const aeroEl = $('#hudAero');
+  const leds = $$('#hudLeds i');
+  if (!speedEl || !gearEl || !leds.length) return;
+
+  const setOpen = (open) => {
+    if (!hud || !toggleBtn) return;
+    hud.hidden = !open;
+    toggleBtn.classList.toggle('is-hidden', open);
+    toggleBtn.setAttribute('aria-expanded', String(open));
+  };
+
+  toggleBtn?.addEventListener('click', () => setOpen(true));
+  closeBtn?.addEventListener('click', () => setOpen(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && hud && !hud.hidden) setOpen(false);
+  });
+
+  let currentSpeed = 0;
+  let targetSpeed = 0;
+  let lastY = window.scrollY;
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      const delta = Math.abs(window.scrollY - lastY);
+      lastY = window.scrollY;
+      targetSpeed = Math.min(340, Math.max(targetSpeed, delta * 4.2));
+    },
+    { passive: true }
+  );
+
+  const tick = () => {
+    currentSpeed += (targetSpeed - currentSpeed) * 0.14;
+    targetSpeed *= 0.9;
+    const kmh = Math.round(currentSpeed);
+    speedEl.textContent = String(kmh).padStart(3, '0');
+
+    const gear = kmh < 5 ? 'N' : kmh < 55 ? '1' : kmh < 105 ? '2' : kmh < 160 ? '3' : kmh < 220 ? '4' : kmh < 280 ? '5' : '6';
+    gearEl.textContent = gear;
+
+    if (aeroEl) aeroEl.classList.toggle('is-active', kmh > 110);
+
+    const lit = Math.round((kmh / 340) * leds.length);
+    leds.forEach((led, idx) => {
+      led.classList.toggle('is-on', idx < lit && idx < 4);
+      led.classList.toggle('is-red', idx < lit && idx >= 4);
+    });
+
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+
+  if (carController) {
+    const swatches = $$('.hud-swatch');
+    swatches.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        swatches.forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        carController.setPaint(btn.dataset.paint);
+      });
+    });
+
+    const lightsBtn = $('#hudLights');
+    lightsBtn?.addEventListener('click', () => {
+      const on = carController.toggleLights();
+      lightsBtn.classList.toggle('is-on', on);
+    });
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /* Boot                                                                */
 /* ------------------------------------------------------------------ */
 async function boot() {
@@ -1210,6 +1105,8 @@ async function boot() {
   initJourneyProgress();
   initHeroParallax();
   initVideoPlayback();
+  const carController = initCar3D(reduce);
+  initTelemetryHUD(carController);
   initScreens();
   initRotator();
   initClock();
@@ -1231,13 +1128,6 @@ async function boot() {
       ease: 'power3.out',
       delay: 0.1,
     });
-    gsap.from('.hero-panel', {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-      delay: 0.3,
-    });
     gsap.from('.nav', {
       y: -24,
       opacity: 0,
@@ -1246,7 +1136,6 @@ async function boot() {
     });
   }
 
-  initHeroScene();
   initTerminal();
   initGitHub();
 

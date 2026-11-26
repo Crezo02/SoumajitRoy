@@ -8,7 +8,7 @@
       name="description"
       content="Soumajit Roy builds real software from Bengaluru: React and Vite interfaces, Flask and PHP APIs, voice and NLP pipelines, and sites that actually ship."
     />
-    <meta name="theme-color" content="#071019" />
+    <meta name="theme-color" content="#0a0a0c" />
     <meta name="author" content="Soumajit Roy" />
     <link rel="canonical" href="https://soumajitroy.vercel.app/" />
 
@@ -48,6 +48,7 @@
     </div>
 
     <div class="grain" aria-hidden="true"></div>
+    <canvas class="car-3d-stage" id="car3dCanvas" aria-hidden="true"></canvas>
     <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
     <div class="cursor" aria-hidden="true">
       <span class="cursor__dot"></span>
@@ -58,15 +59,16 @@
       <span class="side-rail__text">Soumajit&nbsp;Roy</span>
     </div>
 
+    <!-- ───── NAV ───── -->
     <header class="nav" id="nav">
       <a class="logo" href="#top" aria-label="Soumajit Roy, back to top">
         <span class="logo-mark" aria-hidden="true">
           <svg viewBox="0 0 48 48" width="34" height="34">
-            <rect width="48" height="48" rx="14" fill="#071019" />
+            <rect width="48" height="48" rx="14" fill="#111115" />
             <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-              <path d="M22 12 H9 V22 H22 V32 H9" stroke="#f5f4ef" />
-              <path d="M28 32 V12 H32 a5 5 0 0 1 0 10 H28" stroke="#f5f4ef" />
-              <path class="logo-mark__leg" d="M30.5 21.4 L38.5 32" stroke="#3d86ff" />
+              <path d="M22 12 H9 V22 H22 V32 H9" stroke="#f5f3ee" />
+              <path d="M28 32 V12 H32 a5 5 0 0 1 0 10 H28" stroke="#f5f3ee" />
+              <path class="logo-mark__leg" d="M30.5 21.4 L38.5 32" stroke="#d92626" />
             </g>
           </svg>
         </span>
@@ -107,15 +109,14 @@
     </header>
 
     <main id="main">
-      <!-- ───────────────────────── hero ───────────────────────── -->
+      <!-- ───────────────────────── HERO ───────────────────────── -->
       <section class="hero" id="top">
-        <canvas class="hero-scene" id="heroScene" aria-hidden="true"></canvas>
-        <div class="hero-aurora" aria-hidden="true"></div>
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-vignette" aria-hidden="true"></div>
 
         <div class="hero-inner">
           <div class="hero-copy">
+
             <p class="eyebrow" data-reveal>
               <span class="pulse" aria-hidden="true"></span>
               <span>Bengaluru, India</span>
@@ -161,29 +162,28 @@
                 <span class="stat-label">Years building</span>
               </li>
             </ul>
-          </div>
 
-          <aside class="hero-panel">
-            <div class="terminal" data-tilt data-cursor="Peek">
-              <div class="terminal__bar">
-                <span class="dot dot--r"></span>
-                <span class="dot dot--y"></span>
-                <span class="dot dot--g"></span>
-                <span class="terminal__name">soumajit — zsh</span>
+            <div class="hero-dock">
+              <div class="terminal" data-tilt data-cursor="Peek">
+                <div class="terminal__bar">
+                  <span class="dot dot--r"></span>
+                  <span class="dot dot--y"></span>
+                  <span class="dot dot--g"></span>
+                  <span class="terminal__name">soumajit — zsh</span>
+                </div>
+                <div class="terminal__body" id="terminal"></div>
               </div>
-              <div class="terminal__body" id="terminal"></div>
-              <span class="terminal__glow" aria-hidden="true"></span>
-            </div>
 
-            <a class="gh-card" href="https://github.com/Crezo02" target="_blank" rel="noreferrer noopener" data-cursor="Open">
-              <img class="gh-card__avatar" src="https://avatars.githubusercontent.com/u/159593564?v=4" alt="" width="48" height="48" loading="lazy" />
-              <span class="gh-card__meta">
-                <span class="gh-card__name">@Crezo02</span>
-                <span class="gh-card__sub"><b id="ghRepos">—</b> repos · <b id="ghFollowers">—</b> followers</span>
-              </span>
-              <svg class="gh-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" /></svg>
-            </a>
-          </aside>
+              <a class="gh-card" href="https://github.com/Crezo02" target="_blank" rel="noreferrer noopener" data-cursor="Open">
+                <img class="gh-card__avatar" src="https://avatars.githubusercontent.com/u/159593564?v=4" alt="" width="44" height="44" loading="lazy" />
+                <span class="gh-card__meta">
+                  <span class="gh-card__name">@Crezo02</span>
+                  <span class="gh-card__sub"><b id="ghRepos">—</b> repos · <b id="ghFollowers">—</b> followers</span>
+                </span>
+                <svg class="gh-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" /></svg>
+              </a>
+            </div>
+          </div>
         </div>
 
         <a class="scroll-cue" href="#work" aria-label="Scroll to work">
@@ -192,12 +192,12 @@
         </a>
       </section>
 
-      <!-- ───────────────────────── ticker ───────────────────────── -->
+      <!-- ───────────────────────── TICKER ───────────────────────── -->
       <div class="ticker" aria-hidden="true">
         <div class="ticker__track" id="tickerTrack"></div>
       </div>
 
-      <!-- ───────────────────────── work ───────────────────────── -->
+      <!-- ───────────────────────── WORK ───────────────────────── -->
       <section class="section work" id="work">
         <div class="section-head">
           <p class="section-label" data-reveal><span>01</span> Selected work</p>
@@ -213,7 +213,7 @@
         <div class="work-list" id="workList"></div>
       </section>
 
-      <!-- ───────────────────────── screens ───────────────────────── -->
+      <!-- ───────────────────────── SCREENS ───────────────────────── -->
       <section class="section screens" id="screens">
         <div class="section-head">
           <p class="section-label" data-reveal><span>02</span> Screens</p>
@@ -228,7 +228,7 @@
         <div class="screens__track" id="screensTrack"></div>
       </section>
 
-      <!-- ───────────────────────── github ───────────────────────── -->
+      <!-- ───────────────────────── GITHUB ───────────────────────── -->
       <section class="section github" id="github">
         <div class="section-head">
           <p class="section-label" data-reveal><span>03</span> Commit trail</p>
@@ -250,7 +250,7 @@
         </div>
       </section>
 
-      <!-- ───────────────────────── stack ───────────────────────── -->
+      <!-- ───────────────────────── STACK ───────────────────────── -->
       <section class="section stack" id="stack">
         <div class="section-head">
           <p class="section-label" data-reveal><span>04</span> Capabilities</p>
@@ -261,7 +261,7 @@
         <div class="cap-grid" id="capGrid"></div>
       </section>
 
-      <!-- ───────────────────────── journey ───────────────────────── -->
+      <!-- ───────────────────────── JOURNEY ───────────────────────── -->
       <section class="section journey" id="journey">
         <div class="section-head">
           <p class="section-label" data-reveal><span>05</span> Journey</p>
@@ -272,10 +272,8 @@
         <div class="journey-list" id="journeyList"></div>
       </section>
 
-      <!-- ───────────────────────── contact ───────────────────────── -->
+      <!-- ───────────────────────── CONTACT ───────────────────────── -->
       <section class="section contact" id="contact">
-        <div class="contact-glow" aria-hidden="true"></div>
-
         <div class="contact-card" data-reveal>
           <span class="contact-card__portrait">
             <img
@@ -311,8 +309,8 @@
         </p>
 
         <div class="contact-actions" data-reveal data-delay="200">
-          <a class="btn btn--primary btn--lg" id="mailBtn" href="mailto:contact@amyreil.online" data-magnetic data-cursor="Mail">
-            <span id="mailText">contact@amyreil.online</span>
+          <a class="btn btn--primary btn--lg" id="mailBtn" href="mailto:Soumajit8292@gmail.com" data-magnetic data-cursor="Mail">
+            <span id="mailText">Soumajit8292@gmail.com</span>
             <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" /></svg>
           </a>
           <button class="btn btn--ghost" type="button" id="copyBtn" data-magnetic data-cursor="Copy">
@@ -347,5 +345,56 @@
         <a href="#top" data-cursor="Top">Back to top ↑</a>
       </div>
     </footer>
+
+    <!-- collapsible telemetry HUD -->
+    <div class="hud-wrap" id="hudWrap">
+      <button
+        class="hud-toggle"
+        id="hudToggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="telemetryHud"
+        aria-label="Open 3D car telemetry and controls"
+        data-cursor="HUD"
+      >
+        <span class="hud-toggle__dot" aria-hidden="true"></span>
+        <span class="hud-toggle__label">HUD</span>
+        <svg class="hud-toggle__icon" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 10l4-4 4 4" />
+        </svg>
+      </button>
+
+      <aside class="telemetry-hud" id="telemetryHud" aria-label="3D Car Telemetry & Controls" hidden>
+        <div class="hud-head">
+          <span class="hud-head__title">Telemetry · Spec</span>
+          <span class="hud-aero" id="hudAero">AERO</span>
+          <button class="hud-close" id="hudClose" type="button" aria-label="Minimize telemetry">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" /></svg>
+          </button>
+        </div>
+
+        <div class="hud-metrics">
+          <div class="hud-speed">
+            <strong id="hudSpeed">000</strong>
+            <span>KM/H</span>
+          </div>
+          <div class="hud-gear" id="hudGear">N</div>
+          <div class="hud-leds" id="hudLeds">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+
+        <div class="hud-controls">
+          <span class="hud-controls__label">Finish</span>
+          <div class="hud-swatches">
+            <button class="hud-swatch is-active" type="button" data-paint="rosso" title="Rosso Corsa" aria-label="Rosso Corsa paint" style="background:#d91424"></button>
+            <button class="hud-swatch" type="button" data-paint="nero" title="Nero Carbon" aria-label="Nero Carbon paint" style="background:#1c212e"></button>
+            <button class="hud-swatch" type="button" data-paint="blu" title="Blu Tour" aria-label="Blu Tour paint" style="background:#0b3b8c"></button>
+            <button class="hud-swatch" type="button" data-paint="bianco" title="Bianco" aria-label="Bianco paint" style="background:#e9ecf2"></button>
+          </div>
+          <button class="hud-lights is-on" id="hudLights" type="button" title="Toggle DRL Headlights" aria-label="Toggle headlights">DRL</button>
+        </div>
+      </aside>
+    </div>
   </body>
 </html>
